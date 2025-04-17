@@ -8,13 +8,15 @@
 // Execute `rustlings hint modules3` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
-
 // TODO: Complete this use statement
-use ???
+use std::time::{SystemTime,UNIX_EPOCH};
 
 fn main() {
     match SystemTime::now().duration_since(UNIX_EPOCH) {
+        /*
+         * SystemTime::now() 会获取当前的系统时间。
+         * duration_since(UNIX_EPOCH) 会计算当前系统时间与 Unix 纪元之间的时长。
+         */
         Ok(n) => println!("1970-01-01 00:00:00 UTC was {} seconds ago!", n.as_secs()),
         Err(_) => panic!("SystemTime before UNIX EPOCH!"),
     }
