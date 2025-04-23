@@ -3,10 +3,31 @@
 	This problem requires you to implement a sorting algorithm
 	you can use bubble sorting, insertion sorting, heap sorting, etc.
 */
-// I AM NOT DONE
 
-fn sort<T>(array: &mut [T]){
+fn sort<T>(array: &mut [T])
+where
+    T: PartialOrd, // 必需的比较约束
+{
 	//TODO
+    let n = array.len();
+    if n <= 1 {
+        return; // 处理空数组或单元素数组
+    }
+
+    for i in 0..n {
+        let mut swapped = false; // 优化标志：提前终止有序数组
+        for j in 0..n - i - 1 {
+            // 比较相邻元素
+            if array[j] > array[j + 1] {
+                // 交换元素位置
+                array.swap(j, j + 1);
+                swapped = true; // 标记发生交换
+            }
+        }
+        if !swapped {
+            break; // 若没有交换，说明已排序完成
+        }
+    }
 }
 #[cfg(test)]
 mod tests {
